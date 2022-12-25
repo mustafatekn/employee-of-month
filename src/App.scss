@@ -50,6 +50,10 @@ $green: #bff49f;
       display: flex;
       flex-direction: column;
       gap: 0.3rem;
+
+      span {
+        margin-left: 0.3rem;
+      }
     }
   }
   .vote-information {
