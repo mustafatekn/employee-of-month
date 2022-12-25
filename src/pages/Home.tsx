@@ -1,8 +1,9 @@
-import React from 'react'
 import { useQuery, gql } from "@apollo/client";
+import EmployeeCard from "../components/EmployeeCard";
+import { User } from '../types';
 
 export default function Home() {
-    const GET_LOCATIONS = gql`
+  const GET_EMPLOYEES = gql`
     query {
       users {
         data {
@@ -14,26 +15,27 @@ export default function Home() {
             suite
             city
             zipcode
-            geo {
-              lat
-              lng
-            }
           }
           company {
             name
           }
+          website
+          albums{data{photos{data{thumbnailUrl}}}}
         }
       }
     }
   `;
 
-  const { loading, error, data } = useQuery(GET_LOCATIONS);
+  const { loading, error, data } = useQuery(GET_EMPLOYEES);
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error : {error.message}</p>;
-  console.log(data);
-  
+
   return (
-    <div>Home</div>
+    <div className="container pt-5">
+      <div className="grid-container">
+        {data.users.data.map((user: User) => <EmployeeCard user={user} key={user.id} />)}
+      </div>
+    </div>
   )
 }

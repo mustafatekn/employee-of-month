@@ -1,0 +1,121 @@
+$purple: #5c3cbb;
+$white: #ffffff;
+$yellow: #ecdb3c;
+$green: #bff49f;
+
+* {
+  padding: 0;
+  margin: 0;
+  list-style: none;
+  box-sizing: border-box;
+}
+
+.pt-5 {
+  padding-top: 5rem;
+}
+
+.flex {
+  display: flex;
+}
+
+.container {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  gap: 10px;
+  grid-auto-rows: minmax(100px, auto);
+}
+
+.card {
+  width: 50rem;
+  height: 10rem;
+  padding: 1rem 0.5rem;
+  border: 1px solid #000;
+  border-radius: 4px;
+  display: flex;
+
+  .card-body {
+    display: flex;
+    flex-direction: column;
+    margin-left: 1rem;
+    h3 {
+      margin-bottom: 0.75rem;
+    }
+    .card-details {
+      display: flex;
+      flex-direction: column;
+      gap: 0.3rem;
+
+      span {
+        margin-left: 0.3rem;
+      }
+    }
+  }
+  .vote-information {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    align-items: flex-end;
+    justify-content: flex-end;
+    .vote-number {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      width: 7rem;
+      height: 4rem;
+      background: $green;
+      margin-bottom: 1rem;
+      border-radius: 4px;
+      text-align: center;
+      div {
+        font-size: 2rem;
+      }
+    }
+    .vote-btn {
+      width: 7rem;
+      height: 3rem;
+      text-align: center;
+      background-color: $purple;
+      color: $white;
+      border: none;
+      border-radius: 4px;
+      font-size: 1rem;
+      cursor:pointer;
+    }
+  }
+}
+
+@media (min-width: 640px) {
+  .container {
+    max-width: 640px;
+  }
+}
+
+@media (min-width: 768px) {
+  .container {
+    max-width: 768px;
+  }
+}
+
+@media (min-width: 1024px) {
+  .container {
+    max-width: 1024px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .container {
+    max-width: 1280px;
+  }
+}
+
+@media (min-width: 1536px) {
+  .container {
+    max-width: 1536px;
+  }
+}
