@@ -6,7 +6,7 @@ export interface User {
   company: Company;
   website: string;
   albums: Albums;
-  voteCount?: number
+  voteCount?: number;
 }
 
 export interface Company {
@@ -35,5 +35,9 @@ export interface Albums {
 }
 
 export interface UserState {
-    employees: User[];
-  }
+  employees: User[];
+}
+
+export interface IEmployeeCardProps {
+  user: User;
+}

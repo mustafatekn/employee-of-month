@@ -2,9 +2,9 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEnvelope, faLocationPin, faBuilding, faGlobe } from '@fortawesome/free-solid-svg-icons'
 import { useAppDispatch } from '../store';
 import { vote } from '../store/features/employeeSlice';
-import { User } from '../types';
+import { User, IEmployeeCardProps } from '../types';
 
-export default function EmployeeCard(props: any) {
+export default function EmployeeCard(props: IEmployeeCardProps) {
     const { user } = props;
     const dispatch = useAppDispatch();
 
