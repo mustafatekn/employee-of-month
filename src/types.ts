@@ -1,7 +1,7 @@
 export interface User {
   id: string;
   name: string;
-  username: string
+  username: string;
   email: string;
   address: Address;
   company: Company;
@@ -9,15 +9,8 @@ export interface User {
   albums: Albums;
   voteCount?: number;
   posts: {
-    data: {
-        id: number,
-        title: string,
-        body: string,
-        comments: {
-            data: Comment[]
-        }
-    }
-  }
+    data: Post[];
+  };
 }
 
 export interface Company {
@@ -53,9 +46,23 @@ export interface IEmployeeCardProps {
   user: User;
 }
 
-export interface Comment{
-    id: string;
-    name: string;
-    email: string;
-    body: string;
+export interface IEmployeePostProps{
+    post: Post
 }
+
+export interface Comment {
+  id: string;
+  name: string;
+  email: string;
+  body: string;
+}
+
+export interface Post {
+  id: number;
+  title: string;
+  body: string;
+  comments: {
+    data: Comment[];
+  };
+}
+

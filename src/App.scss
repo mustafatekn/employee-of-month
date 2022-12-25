@@ -109,43 +109,59 @@ a {
     }
   }
 }
-
-.employee-details {
+.wrapper-column {
   width: 70%;
   margin: auto;
-  background-color: $white;
-  border-radius: 4px;
-  .employee-details-header {
-    height: 10rem;
-    background-color: $purple;
-  }
-
-  .profile-image-wrapper {
-    position: relative;
-    height: 4rem;
-    .profile-image {
-      border-radius: 50%;
-      border: 2px solid $white;
-      position: absolute;
-      transform: translate(0, -70%);
-      left: 3rem;
+  .employee-details {
+    margin: auto;
+    background-color: $white;
+    border-radius: 4px;
+    .employee-details-header {
+      height: 10rem;
+      background-color: $purple;
     }
-  }
 
-  .employee-information-wrapper {
-    display: flex;
-    justify-content: space-between;
-    padding: 0rem 3rem 3rem 3rem;
-    gap: 5rem;
-    .employee-information,
-    .address,
-    .communication {
+    .profile-image-wrapper {
+      position: relative;
+      height: 4rem;
+      .profile-image {
+        border-radius: 50%;
+        border: 2px solid $white;
+        position: absolute;
+        transform: translate(0, -70%);
+        left: 3rem;
+      }
+    }
+
+    .employee-information-wrapper {
       display: flex;
-      flex-direction: column;
-      gap: 0.3rem;
+      justify-content: space-between;
+      padding: 0rem 3rem 3rem 3rem;
+      gap: 5rem;
+      .employee-information,
+      .address,
+      .communication {
+        display: flex;
+        flex-direction: column;
+        gap: 0.3rem;
+      }
     }
   }
 }
+
+.posts-wrapper {
+  margin-top: 3rem;
+  .post-wrapper{
+    background-color: $white;
+    display:flex;
+    flex-direction: column;
+    border-radius: 4px;
+    gap:1rem;
+    margin: 2rem 0;
+    padding:1rem;
+  }
+}
+
 
 @media (min-width: 640px) {
   .container {
