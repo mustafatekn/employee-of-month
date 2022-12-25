@@ -12,7 +12,7 @@ export const appSlice = createSlice({
     setEmployees: (state, action: PayloadAction<User[]>) => {
       state.employees = action.payload;
     },
-    vote: (state, action) => {
+    vote: (state, action: PayloadAction<User>) => {
       const index = state.employees.findIndex(
         (user) => user.id === action.payload.id
       );
