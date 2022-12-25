@@ -30,14 +30,15 @@ export default function Home() {
   if (error) return <p>Error : {error.message}</p>;
 
   return (
-    <div>
-      {data.users.data.map((user: User) => (
-        <div key={user.id}>
-          <span>{user.name}</span>{" "}
-          <span>{user.email}</span>
-        </div>
-      ))}
-
+    <div className="container">
+      <div className="grid-container">
+        {data.users.data.map((user: User) => (
+          <div key={user.id}>
+            <span>{user.name}</span>{" "}
+            <span>{user.email}</span>
+          </div>
+        ))}
+      </div>
     </div>
   )
 }
