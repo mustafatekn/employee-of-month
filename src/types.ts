@@ -5,6 +5,7 @@ export interface User {
   address: Address;
   company: Company;
   website: string;
+  albums: Albums;
 }
 
 export interface Company {
@@ -16,4 +17,20 @@ export interface Address {
   suite: string;
   city: string;
   zipcode: string;
+}
+
+export interface Photo{
+    thumbnailUrl: string
+}
+
+export interface Albums {
+    data: [
+        {
+            photos: {
+                data: [
+                    {thumbnailUrl: string}
+                ]
+            }
+        }
+    ];
 }

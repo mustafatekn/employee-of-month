@@ -19,6 +19,7 @@ export default function Home() {
             name
           }
           website
+          albums{data{photos{data{thumbnailUrl}}}}
         }
       }
     }
@@ -30,12 +31,21 @@ export default function Home() {
   if (error) return <p>Error : {error.message}</p>;
 
   return (
-    <div className="container">
+    <div className="container pt-5">
       <div className="grid-container">
         {data.users.data.map((user: User) => (
-          <div key={user.id}>
-            <span>{user.name}</span>{" "}
-            <span>{user.email}</span>
+          <div key={user.id} className="card">
+            <img src={user.albums.data[0].photos.data[0].thumbnailUrl} alt="user-img" />
+            <div className="card-body">
+              <h3>{user.name}</h3>
+              <div className="card-details">
+                <p>{user.email}</p>
+                <p>{user.company.name}</p>
+                <p>{user.website}</p>
+                <p>{user.address.city}</p>
+              </div>
+
+            </div>
           </div>
         ))}
       </div>
