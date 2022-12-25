@@ -3,6 +3,8 @@ import ReactDOM from "react-dom/client";
 import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
+import { Provider } from 'react-redux'
+import store from "./store";
 
 const client = new ApolloClient({
   uri: "https://graphqlzero.almansi.me/api",
@@ -12,9 +14,11 @@ const client = new ApolloClient({
 const root = ReactDOM.createRoot(document.getElementById("root") as HTMLElement);
 root.render(
   <React.StrictMode>
-    <ApolloProvider client={client}>
-      <App />
-    </ApolloProvider>
+    <Provider store={store}>
+      <ApolloProvider client={client}>
+        <App />
+      </ApolloProvider>
+    </Provider>
   </React.StrictMode>
 );
 
