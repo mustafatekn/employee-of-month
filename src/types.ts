@@ -19,18 +19,16 @@ export interface Address {
   zipcode: string;
 }
 
-export interface Photo{
-    thumbnailUrl: string
+export interface Photo {
+  thumbnailUrl: string;
 }
 
 export interface Albums {
-    data: [
-        {
-            photos: {
-                data: [
-                    {thumbnailUrl: string}
-                ]
-            }
-        }
-    ];
+  data: [
+    {
+      photos: {
+        data: [{ thumbnailUrl: string }];
+      };
+    }
+  ];
 }

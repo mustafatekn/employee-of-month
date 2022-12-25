@@ -1,3 +1,8 @@
+$purple: #5c3cbb;
+$white: #ffffff;
+$yellow: #ecdb3c;
+$green: #bff49f;
+
 * {
   padding: 0;
   margin: 0;
@@ -44,7 +49,38 @@
     .card-details {
       display: flex;
       flex-direction: column;
-      gap:0.3rem;
+      gap: 0.3rem;
+    }
+  }
+  .vote-information {
+    display: flex;
+    flex-direction: column;
+    flex: 1;
+    align-items: flex-end;
+    justify-content: flex-end;
+    .vote-number {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      width: 7rem;
+      height: 4rem;
+      background: $green;
+      margin-bottom: 1rem;
+      border-radius: 4px;
+      text-align: center;
+      div {
+        font-size: 2rem;
+      }
+    }
+    .vote-btn {
+      width: 7rem;
+      height: 3rem;
+      text-align: center;
+      background-color: $purple;
+      color: $white;
+      border: none;
+      border-radius: 4px;
+      font-size: 1rem;
     }
   }
 }
