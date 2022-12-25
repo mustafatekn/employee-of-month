@@ -1,8 +1,8 @@
-import React from 'react'
 import { useQuery, gql } from "@apollo/client";
+import { User } from '../types';
 
 export default function Home() {
-    const GET_LOCATIONS = gql`
+  const GET_LOCATIONS = gql`
     query {
       users {
         data {
@@ -14,14 +14,11 @@ export default function Home() {
             suite
             city
             zipcode
-            geo {
-              lat
-              lng
-            }
           }
           company {
             name
           }
+          website
         }
       }
     }
@@ -31,9 +28,16 @@ export default function Home() {
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error : {error.message}</p>;
-  console.log(data);
-  
+
   return (
-    <div>Home</div>
+    <div>
+      {data.users.data.map((user: User) => (
+        <div key={user.id}>
+          <span>{user.name}</span>{" "}
+          <span>{user.email}</span>
+        </div>
+      ))}
+
+    </div>
   )
 }
