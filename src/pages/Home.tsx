@@ -13,8 +13,29 @@ export default function Home() {
 
   useEffect(() => {
     if (!(!loading && data)) return;
-    dispatch(setEmployees(data.users.data))
+    const usersCopy: User[] = [];
+
+    data.users.data.forEach((user: User) => {
+      const userClone = {
+        id: user.id,
+        albums: user.albums,
+        address: user.address,
+        company: user.company,
+        website: user.website,
+        email: user.email,
+        name: user.name,
+        voteCount: generateRandomNumber()
+      }
+      usersCopy.push(userClone)
+    })
+    // had to do this because object was not extensible. I know it is not good but I had to.
+    // fake api doesn't contain voteCount so I generated it.
+    dispatch(setEmployees(usersCopy));
   }, [data, loading])
+
+  const generateRandomNumber = () => {
+    return Math.floor(Math.random() * 100);
+  }
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error : {error.message}</p>;

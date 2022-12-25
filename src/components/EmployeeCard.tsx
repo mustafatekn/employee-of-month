@@ -4,10 +4,6 @@ import { faEnvelope, faLocationPin, faBuilding, faGlobe } from '@fortawesome/fre
 export default function EmployeeCard(props: any) {
     const { user } = props;
 
-    const generateRandomNumber = () => {
-        return Math.floor(Math.random() * 100);
-    }
-
     return (
         <div className="card">
             <img src={user.albums.data[0].photos.data[0].thumbnailUrl} alt="user-img" />
@@ -23,7 +19,7 @@ export default function EmployeeCard(props: any) {
             <div className="vote-information">
                 <div className="vote-number">
                     <p>Vote Count</p>
-                    <div>{generateRandomNumber()}</div>
+                    <div>{user.voteCount}</div>
                 </div>
                 <button type="button" className="vote-btn">Vote!</button>
             </div>

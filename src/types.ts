@@ -6,6 +6,7 @@ export interface User {
   company: Company;
   website: string;
   albums: Albums;
+  voteCount?: number
 }
 
 export interface Company {
