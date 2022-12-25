@@ -24,7 +24,9 @@ export default function Home() {
         website: user.website,
         email: user.email,
         name: user.name,
-        voteCount: generateRandomNumber()
+        voteCount: generateRandomNumber(),
+        posts: user.posts,
+        username: user.username
       }
       usersCopy.push(userClone)
     })

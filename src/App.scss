@@ -105,6 +105,14 @@ a{
   }
 }
 
+.user-details-header{
+  background-color: $purple;
+}
+.profile-image{
+  border-radius: 50%;
+  border:2px solid $white
+}
+
 @media (min-width: 640px) {
   .container {
     max-width: 640px;

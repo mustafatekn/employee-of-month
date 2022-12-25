@@ -1,14 +1,14 @@
 import "./App.scss";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import Home from "./pages/Home";
-import Employee from "./pages/Employee";
+import EmployeeDetails from "./pages/EmployeeDetails";
 
 function App() {
   return (
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/:id" element={<Employee />} />
+        <Route path="/:id" element={<EmployeeDetails />} />
       </Routes>
     </BrowserRouter>
   );
