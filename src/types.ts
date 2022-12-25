@@ -32,3 +32,7 @@ export interface Albums {
     }
   ];
 }
+
+export interface UserState {
+    employees: User[];
+  }

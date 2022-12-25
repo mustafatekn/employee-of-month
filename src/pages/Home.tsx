@@ -1,32 +1,20 @@
-import { useQuery, gql } from "@apollo/client";
+import { useEffect } from 'react';
+import { useQuery } from "@apollo/client";
 import EmployeeCard from "../components/EmployeeCard";
 import { User } from '../types';
+import { getEmployees } from "../queries";
+import { useAppDispatch, useAppSelector } from "../store";
+import { setEmployees } from "../store/features/employeeSlice";
 
 export default function Home() {
-  const GET_EMPLOYEES = gql`
-    query {
-      users {
-        data {
-          id
-          name
-          email
-          address {
-            street
-            suite
-            city
-            zipcode
-          }
-          company {
-            name
-          }
-          website
-          albums{data{photos{data{thumbnailUrl}}}}
-        }
-      }
-    }
-  `;
+  const { loading, error, data } = useQuery(getEmployees)
+  const employees = useAppSelector(state => state.employees.employees)
+  const dispatch = useAppDispatch();
 
-  const { loading, error, data } = useQuery(GET_EMPLOYEES);
+  useEffect(() => {
+    if (!(!loading && data)) return;
+    dispatch(setEmployees(data.users.data))
+  }, [data, loading])
 
   if (loading) return <p>Loading...</p>;
   if (error) return <p>Error : {error.message}</p>;
@@ -34,7 +22,7 @@ export default function Home() {
   return (
     <div className="container pt-5">
       <div className="grid-container">
-        {data.users.data.map((user: User) => <EmployeeCard user={user} key={user.id} />)}
+        {employees.map((user: User) => <EmployeeCard user={user} key={user.id} />)}
       </div>
     </div>
   )
