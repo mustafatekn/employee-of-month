@@ -12,8 +12,16 @@ export const appSlice = createSlice({
     setEmployees: (state, action: PayloadAction<User[]>) => {
       state.employees = action.payload;
     },
+    vote: (state, action) => {
+      const index = state.employees.findIndex(
+        (user) => user.id === action.payload.id
+      );
+      state.employees[index].voteCount! += 1;
+      //order employees by vote count
+      state.employees.sort((a: User, b: User) => b.voteCount! - a.voteCount!);
+    },
   },
 });
 
-export const { setEmployees } = appSlice.actions;
+export const { setEmployees, vote } = appSlice.actions;
 export default appSlice.reducer;

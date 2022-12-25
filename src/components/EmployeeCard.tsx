@@ -1,8 +1,16 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faEnvelope, faLocationPin, faBuilding, faGlobe } from '@fortawesome/free-solid-svg-icons'
+import { useAppDispatch } from '../store';
+import { vote } from '../store/features/employeeSlice';
+import { User } from '../types';
 
 export default function EmployeeCard(props: any) {
     const { user } = props;
+    const dispatch = useAppDispatch();
+
+    const onClickVote = (user: User) => {
+        dispatch(vote(user));
+    };
 
     return (
         <div className="card">
@@ -21,7 +29,7 @@ export default function EmployeeCard(props: any) {
                     <p>Vote Count</p>
                     <div>{user.voteCount}</div>
                 </div>
-                <button type="button" className="vote-btn">Vote!</button>
+                <button type="button" className="vote-btn" onClick={() => onClickVote(user)}>Vote!</button>
             </div>
         </div>
     )
