@@ -20,6 +20,7 @@ export default function EmployeeCard(props: IEmployeeCardProps) {
 
     return (
         <div className="card">
+            {/* fake api doesn't provide any profile image data, so I just used albums */}
             <img src={user.albums.data[0].photos.data[0].thumbnailUrl} alt="user-img" className='card-img' onClick={() => onClickImage(user.id)} />
             <div className="card-body">
                 <h3><Link to={`${user.id}`}>{user.name}</Link></h3>

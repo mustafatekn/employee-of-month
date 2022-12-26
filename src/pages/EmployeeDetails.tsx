@@ -17,6 +17,7 @@ export default function EmployeeDetails() {
                 <header className='employee-details'>
                     <div className='employee-details-header' />
                     <div className='profile-image-wrapper'>
+                        {/* fake api doesn't provide any profile image data, so I just used albums */}
                         <img src={data.user.albums.data[0].photos.data[0].thumbnailUrl} className="profile-image" />
                     </div>
                     <div className='employee-information-wrapper'>

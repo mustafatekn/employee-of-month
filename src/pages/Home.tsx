@@ -43,10 +43,23 @@ export default function Home() {
   if (error) return <p>Error : {error.message}</p>;
 
   return (
-    <div className="container pt-5">
-      <div className="grid-container">
-        {employees.map((user: User) => <EmployeeCard user={user} key={user.id} />)}
+    <div className="container py-5">
+      <header>
+        <h1 className='page-title'>Choose the employee of the month!</h1>
+      </header>
+      <div className='flex'>
+        <div className='w-50'>
+          {employees.map((user: User) => <EmployeeCard user={user} key={user.id} />)}
+        </div>
+        <aside className='w-50'>
+          <div className='side-card'>
+            <h3>We would be happy if you spent your time for us!</h3>
+            <p>We are always trying to choose the employee of the month in justice.</p>
+            <p>Please help us to do this. Vote anyone who is worthy.</p>
+          </div>
+        </aside>
       </div>
+
     </div>
   )
 }
