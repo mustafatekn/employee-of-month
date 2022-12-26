@@ -5,6 +5,7 @@ import { User } from '../types';
 import { getEmployees } from "../queries";
 import { useAppDispatch, useAppSelector } from "../store";
 import { setEmployees } from "../store/features/employeeSlice";
+import Loading from '../components/Loading';
 
 export default function Home() {
   const { loading, error, data } = useQuery(getEmployees)
@@ -39,7 +40,7 @@ export default function Home() {
     return Math.floor(Math.random() * 100);
   }
 
-  if (loading) return <p>Loading...</p>;
+  if (loading) return <Loading/>;
   if (error) return <p>Error : {error.message}</p>;
 
   return (

@@ -3,12 +3,13 @@ import { useQuery } from "@apollo/client";
 import { getEmployee } from "../queries";
 import { Post } from '../types';
 import EmployeePost from '../components/EmployeePost';
+import Loading from '../components/Loading';
 
 export default function EmployeeDetails() {
     const params = useParams()
     const { loading, error, data } = useQuery(getEmployee(params.id!))
 
-    if (loading) return <p>Loading...</p>;
+    if (loading) return <Loading/>;
     if (error) return <p>Error : {error.message}</p>;
 
     return (
