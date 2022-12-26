@@ -1,24 +1,95 @@
 import { gql } from "@apollo/client";
 
-export const getEmployees =  gql`
-query {
-  users {
-    data {
-      id
-      name
-      email
-      address {
-        street
-        suite
-        city
-        zipcode
-      }
-      company {
+export const getEmployees = gql`
+  query {
+    users {
+      data {
+        id
+        username
         name
+        email
+        address {
+          street
+          suite
+          city
+          zipcode
+        }
+        company {
+          name
+        }
+        website
+        albums {
+          data {
+            photos {
+              data {
+                thumbnailUrl
+              }
+            }
+          }
+        }
+        posts {
+          data {
+            id
+            title
+            body
+            comments {
+              data {
+                id
+                name
+                email
+                body
+              }
+            }
+          }
+        }
       }
-      website
-      albums{data{photos{data{thumbnailUrl}}}}
     }
   }
-}
-`
+`;
+
+export const getEmployee = (id: string) => {
+  return gql`
+  query {
+    user(id: ${id}) {
+        id
+        username
+        name
+        email
+        address {
+          street
+          suite
+          city
+          zipcode
+        }
+        company {
+          name
+        }
+        website
+        albums {
+          data {
+            photos {
+              data {
+                thumbnailUrl
+              }
+            }
+          }
+        }
+        posts {
+          data {
+            id
+            title
+            body
+            comments {
+              data {
+                id
+                name
+                email
+                body
+              }
+            }
+          }
+        }
+    }
+  }
+ `;
+};

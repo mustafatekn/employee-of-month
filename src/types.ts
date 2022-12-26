@@ -1,12 +1,16 @@
 export interface User {
   id: string;
   name: string;
+  username: string;
   email: string;
   address: Address;
   company: Company;
   website: string;
   albums: Albums;
   voteCount?: number;
+  posts: {
+    data: Post[];
+  };
 }
 
 export interface Company {
@@ -41,3 +45,24 @@ export interface UserState {
 export interface IEmployeeCardProps {
   user: User;
 }
+
+export interface IEmployeePostProps{
+    post: Post
+}
+
+export interface Comment {
+  id: string;
+  name: string;
+  email: string;
+  body: string;
+}
+
+export interface Post {
+  id: number;
+  title: string;
+  body: string;
+  comments: {
+    data: Comment[];
+  };
+}
+
