@@ -1,4 +1,9 @@
-<!doctype html><html><head><meta charset="UTF-8"><style>.notification-wrapper {
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <style>
+        .notification-wrapper {
             height: 120px;
             background-color: #fafafa;
             padding: 20px;
@@ -85,31 +90,75 @@
 
         .btn-secondary {
             background-color: #999;
-        }</style><script>function parseHashString() {
-            const parsed = {};
-            location.hash.substr(1).split("&").forEach(function (item) {
-                const parts = item.split("=");
-                parsed[parts[0]] = decodeURIComponent(parts[1]);
-            });
-
-            return parsed;
         }
+    </style>
+    <script>
+			function parseHashString() {
+				const parsed = {};
+				const validInputRegex = /^[a-zA-Z0-9\-_:/?#\@!$&'*+,;=.]+$/;
 
-        function init() {
-            const params = parseHashString()
-                , nmCdnHost = new URL('https://ntm.netmera-web.com').host
-                , workerJsHost = new URL(params.wSrc).host
-            ;
-            if (nmCdnHost === workerJsHost || workerJsHost.endsWith('netmera-web.com') || workerJsHost.endsWith('netmera.com') || workerJsHost.endsWith('sdpaas.com')) {
-                const elm = document.createElement("script");
-                elm.type = "text/javascript";
-                elm.async = true;
-                elm.src = params.wSrc;
-                elm.onload = function () {
-                    nmWorker.init(params);
-                };
-                document.getElementsByTagName("head")[0].appendChild(elm);
-            } else {
-                console.log('Netmara::fbox.js domain mismatch! nmCdnHost=' + nmCdnHost + ', fboxJsHost=' + workerJsHost);
-            }
-        }</script></head><body onload="init()"><div class="notification-wrapper" id="notification-dlg"><div class="notification-logo" id="notification-logo"></div><div class="notification-text-wrapper"><div class="notification-title" id="notification-title">We would like to send you push notifications.</div><div class="notification-info" id="notification-info">Learn Innovations and Campaigns Instantly, Do not Miss Opportunities!</div></div><div style="clear: both;"><div class="notification-buttons"><div class="btn-notification btn-secondary" id="btn-later" onclick="nmWorker.onAskLaterClicked();">Ask Later</div><div class="btn-notification" id="btn-allow" onclick="nmWorker.onContinueOptinClicked();">Continue</div></div><div style="clear: both;"></div></div></div></body></html>
+				location.hash.substr(1).split("&").forEach(function (item) {
+					const parts = item.split("=");
+					if (parts.length === 2) {
+						const key = decodeURIComponent(parts[0]);
+						const value = decodeURIComponent(parts[1]);
+						if (validInputRegex.test(key) && validInputRegex.test(value)) {
+							parsed[key] = value;
+						} else {
+							console.warn('Invalid Key or Value:', key, value);
+						}
+					} else {
+						console.warn('Invalid parameter format:', item);
+					}
+				});
+
+				return parsed;
+			}
+
+
+			function init() {
+				const params = parseHashString();
+				const nmCdnHost = new URL('https://ntmpreprod.netmera-web.com').host;
+				const workerJsHost = new URL(params.wSrc).host;
+
+				if (nmCdnHost === workerJsHost || workerJsHost.endsWith('netmera-web.com') || workerJsHost.endsWith('netmera.com') || workerJsHost.endsWith('sdpaas.com')) {
+					const elm = document.createElement("script");
+					elm.type = "text/javascript";
+					elm.async = true;
+					elm.src = params.wSrc;
+					elm.onload = function () {
+						nmWorker.init(params);
+					};
+					document.getElementsByTagName("head")[0].appendChild(elm);
+				} else {
+					console.error('Netmara::fbox.js domain mismatch! nmCdnHost=' + nmCdnHost + ', fboxJsHost=' + workerJsHost);
+				}
+			}
+
+    </script>
+</head>
+
+<body onload="init()">
+
+<div class="notification-wrapper" id="notification-dlg">
+    <div class="notification-logo" id="notification-logo"></div>
+    <div class="notification-text-wrapper">
+        <div class="notification-title" id="notification-title">We would like to send you push notifications.</div>
+        <div class="notification-info" id="notification-info">Learn Innovations and Campaigns Instantly, Do not Miss
+            Opportunities!
+        </div>
+    </div>
+    <div style="clear: both;">
+        <div class="notification-buttons">
+            <div class="btn-notification btn-secondary" id="btn-later" onclick="nmWorker.onAskLaterClicked();">Ask
+                Later
+            </div>
+            <div class="btn-notification" id="btn-allow" onclick="nmWorker.onContinueOptinClicked();">Continue</div>
+        </div>
+        <div style="clear: both;"></div>
+    </div>
+</div>
+
+
+</body>
+</html>
