@@ -47,6 +47,7 @@ export default function Home() {
     <div className="container py-5">
       <header>
         <h1 className='page-title'>Choose the employee of the month!</h1>
+        <h5 className='text-3xl text-red-700 font-thin text-center mb-10'>This header contains TailwindCSS classes.</h5>
       </header>
       <div className='flex'>
         <div className='w-50'>
