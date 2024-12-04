@@ -40,7 +40,7 @@ export default function Home() {
     return Math.floor(Math.random() * 100);
   }
 
-  if (loading) return <Loading/>;
+  if (loading) return <Loading />;
   if (error) return <p>Error : {error.message}</p>;
 
   return (
