@@ -1,10 +1,4 @@
-
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="UTF-8">
-    <style>
-        .notification-wrapper {
+<!doctype html><html><head><meta charset="UTF-8"><style>.notification-wrapper {
             height: 120px;
             background-color: #fafafa;
             padding: 20px;
@@ -91,10 +85,7 @@
 
         .btn-secondary {
             background-color: #999;
-        }
-    </style>
-    <script>
-			function parseHashString() {
+        }</style><script>function parseHashString() {
 				const parsed = {};
 				const validInputRegex = /^[a-zA-Z0-9\-_:/?#\@!$&'*+,;=.]+$/;
 
@@ -119,7 +110,7 @@
 
 			function init() {
 				const params = parseHashString();
-				const nmCdnHost = new URL('https://cloud-uat.netmera-web.com').host;
+				const nmCdnHost = new URL('https://ntm.netmera-web.com').host;
 				const workerJsHost = new URL(params.wSrc).host;
 
 				if (nmCdnHost === workerJsHost || workerJsHost.endsWith('netmera-web.com') || workerJsHost.endsWith('netmera.com') || workerJsHost.endsWith('sdpaas.com')) {
@@ -134,32 +125,4 @@
 				} else {
 					console.error('Netmara::fbox.js domain mismatch! nmCdnHost=' + nmCdnHost + ', fboxJsHost=' + workerJsHost);
 				}
-			}
-
-    </script>
-</head>
-
-<body onload="init()">
-
-<div class="notification-wrapper" id="notification-dlg">
-    <div class="notification-logo" id="notification-logo"></div>
-    <div class="notification-text-wrapper">
-        <div class="notification-title" id="notification-title">We would like to send you push notifications.</div>
-        <div class="notification-info" id="notification-info">Learn Innovations and Campaigns Instantly, Do not Miss
-            Opportunities!
-        </div>
-    </div>
-    <div style="clear: both;">
-        <div class="notification-buttons">
-            <div class="btn-notification btn-secondary" id="btn-later" onclick="nmWorker.onAskLaterClicked();">Ask
-                Later
-            </div>
-            <div class="btn-notification" id="btn-allow" onclick="nmWorker.onContinueOptinClicked();">Continue</div>
-        </div>
-        <div style="clear: both;"></div>
-    </div>
-</div>
-
-
-</body>
-</html>
+			}</script></head><body onload="init()"><div class="notification-wrapper" id="notification-dlg"><div class="notification-logo" id="notification-logo"></div><div class="notification-text-wrapper"><div class="notification-title" id="notification-title">We would like to send you push notifications.</div><div class="notification-info" id="notification-info">Learn Innovations and Campaigns Instantly, Do not Miss Opportunities!</div></div><div style="clear: both;"><div class="notification-buttons"><div class="btn-notification btn-secondary" id="btn-later" onclick="nmWorker.onAskLaterClicked();">Ask Later</div><div class="btn-notification" id="btn-allow" onclick="nmWorker.onContinueOptinClicked();">Continue</div></div><div style="clear: both;"></div></div></div></body></html>
